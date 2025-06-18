@@ -1,0 +1,4 @@
+Etiquetas
+
+Evitar la recarga de paginas
+wire:navigate

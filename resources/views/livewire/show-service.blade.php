@@ -3,11 +3,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 mx-auto text-center">
-                    <h2 class="mb-3 text-capitalize">Our Services</h2>
+                    <h2 class="mb-3 text-capitalize">{{ $service->title }}</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
-                        <li class="list-inline-item"><a href="index.html">Home</a>
+                        <li class="list-inline-item"><a wire:navigate href="{{ route('home') }}">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; <a href="services.html">Services</a>
+                        <li class="list-inline-item">/ &nbsp; <a wire:navigate
+                                href="{{ route('services.index') }}">Services</a>
+                        </li>
+                        <li class="list-inline-item">/ &nbsp; <a wire:navigate
+                                href="{{ route('service.show', $service) }}">{{ $service->title }}</a>
                         </li>
                     </ul>
                 </div>
@@ -62,14 +66,15 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section-sm">
         <div class="container">
-            <div class="row justify-content-center">
-                @if (!empty($services))
-                    @foreach ($services as $service)
-                        <x-service-card :service="$service" />
-                    @endforeach
-                @endif
+            <div class="row g-5">
+
+                <div class="col-lg-12">
+                    <div class="content">
+                        {!! $service->description !!}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
