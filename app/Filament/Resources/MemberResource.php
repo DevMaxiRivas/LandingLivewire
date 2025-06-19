@@ -48,9 +48,9 @@ class MemberResource extends Resource
                     ->label('Twitter URL'),
                 TextInput::make('in_url')
                     ->url()
-                    ->default('https://linkedin.com/')
+                    ->default('https://instagram.com/')
                     ->maxLength(255)
-                    ->label('LinkedIn URL'),
+                    ->label('Instagram URL'),
                 FileUpload::make('image')
                     ->label('Profile Image')
                     ->image()

@@ -1,0 +1,18 @@
+Funciones dentro de archivos .blade
+
+Modificar el archivo composer.json  de la siguiente manera
+"autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+
+Crear el archivo helpers.php
+
+Ejecutar 
+composer dump-autoload

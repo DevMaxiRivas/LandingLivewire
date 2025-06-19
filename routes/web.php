@@ -15,3 +15,6 @@ Route::get('/services', \App\Livewire\ShowServicePage::class)
 
 Route::get('/service/{service}', \App\Livewire\ShowService::class)
     ->name('service.show');
+
+Route::get('/team', \App\Livewire\ShowTeamPage::class)
+    ->name('team.index');
