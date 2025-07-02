@@ -52,7 +52,9 @@
                         </li>
                         <li class="nav-item "> <a wire:navigate class="nav-link" href="{{ route('team.index') }}">Our
                                 Team</a></li>
-                        <li class="nav-item "><a class="nav-link " href="#">Blog</a></li>
+                        <li class="nav-item ">
+                            <a wire:navigate class="nav-link" href="{{ route('blog.index') }}">Blog</a>
+                        </li>
                         <li class="nav-item "><a class="nav-link " href="#">FAQ</a></li>
                     </ul>
                     <a href="#!" class="btn btn-outline-primary">Contact Us</a>
