@@ -4,11 +4,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 mx-auto text-center">
-                    <h2 class="mb-3 text-capitalize">Blog</h2>
+                    <h2 class="mb-3 text-capitalize">article</h2>
                     <ul class="list-inline breadcrumbs text-capitalize" style="font-weight:500">
                         <li class="list-inline-item"><a href="index.html">Home</a>
                         </li>
-                        <li class="list-inline-item">/ &nbsp; <a href="blog.html">Blog</a>
+                        <li class="list-inline-item">/ &nbsp; <a href="article.html">article</a>
                         </li>
                     </ul>
                 </div>
@@ -69,48 +69,30 @@
                 <div class="col-lg-9">
                     <div class="me-lg-4">
                         <div class="row gy-5">
-                            @foreach ($blogs as $blog)
+                            @foreach ($articles as $article)
                                 <div class="col-md-6" data-aos="fade">
-                                    <article class="blog-post">
+                                    <article class="article-post">
                                         <div class="post-slider slider-sm rounded">
                                             <img loading="lazy" decoding="async"
-                                                src="{{ $blog->image ? asset('storage/' . $blog->image) : 'https://via.placeholder.com/150' }}"
+                                                src="{{ $article->image ? asset('storage/' . $article->image) : 'https://media.sproutsocial.com/uploads/2022/05/How-to-post-on-instagram-from-pc.jpg' }}"
                                                 alt="Post Thumbnail"
                                                 style="width: 100%; height: 200px; object-fit: cover;" class="img-fluid"
                                                 loading="lazy" decoding="async"
                                                 style="max-height: 300px; object-fit: cover;">
                                         </div>
                                         <div class="pt-4">
-                                            <p class="mb-3">{{ $blog->created_at->format('d M, Y') }}</p>
+                                            <p class="mb-3">{{ $article->created_at->format('d M, Y') }}</p>
                                             <h2 class="h4"><a class="text-black"
-                                                    href="blog-details.html">{{ $blog->title }}</a></h2>
-                                            <a href="{{-- route('blog-details', $blog->id) --}}" class="text-primary fw-bold"
+                                                    href="article-details.html">{{ $article->title }}</a></h2>
+                                            <a wire:navigate href="{{ route('blog.detail', $article) }}"
+                                                class="text-primary fw-bold"
                                                 aria-label="Read the full article by clicking here">Read More</a>
                                         </div>
                                     </article>
                                 </div>
                             @endforeach
                             <div class="col-12">
-                                <nav class="mt-4">
-                                    <!-- pagination -->
-                                    <nav class="mb-md-50">
-                                        <ul class="pagination justify-content-center">
-                                            <li class="page-item active "> <a href="blog.html" class="page-link">
-                                                    1
-                                                </a>
-                                            </li>
-                                            <li class="page-item"> <a href="blog.html" class="page-link">
-                                                    2
-                                                </a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="blog.html" aria-label="Pagination Arrow"> <i
-                                                        class="fas fa-angle-right"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </nav>
+                                {{ $articles->links() }}
                             </div>
                         </div>
                     </div>
@@ -122,7 +104,8 @@
                         <ul class="list-unstyled widget-list">
                             @foreach ($categories as $category)
                                 <li>
-                                    <a href="#!">
+                                    <a wire:navigate
+                                        href="{{ route('blog.index') }}?categorySlug={{ $category->slug }}">
                                         {{ $category->name }}
                                         <small class="ml-auto">({{ $category->articles->count() }})</small>
                                     </a>
@@ -154,51 +137,30 @@
                     <div class="widget">
                         <h5 class="widget-title"><span>Latest Article</span></h5>
                         <!-- post-item -->
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/elements/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async"
-                                            src="images/blog/post-4.jpg" alt="Post Thumbnail">
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Elements That
-                                            You Can Use To Create A New Post On This Template.</a></h5>
-                                    <small>March 15, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/post-1/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async"
-                                            src="images/blog/post-1.jpg" alt="Post Thumbnail">
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful
-                                            Loving Couple Bakers Drinking Coffee</a></h5>
-                                    <small>March 14, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled widget-list">
-                            <li class="d-flex widget-post align-items-center">
-                                <a class="text-black" href="/blog/post-2/">
-                                    <div class="widget-post-image flex-shrink-0 me-3">
-                                        <img class="rounded" loading="lazy" decoding="async"
-                                            src="images/blog/post-2.jpg" alt="Post Thumbnail">
-                                    </div>
-                                </a>
-                                <div class="flex-grow-1">
-                                    <h5 class="h6 mb-0"><a class="text-black" href="blog-details.html">Cheerful
-                                            Loving Couple Bakers Drinking Coffee</a></h5>
-                                    <small>March 14, 2020</small>
-                                </div>
-                            </li>
-                        </ul>
+                        @if (!empty($last_articles))
+                            <ul class="list-unstyled widget-list">
+                                @foreach ($last_articles as $article)
+                                    <li class="d-flex widget-post align-items-center">
+                                        <a class="text-black" href="/article/elements/">
+                                            <div class="p-1 widget-post-image flex-shrink-0 me-3">
+                                                <img class="rounded" loading="lazy" decoding="async"
+                                                    src="{{ $article->image ? asset('storage/' . $article->image) : 'https://media.sproutsocial.com/uploads/2022/05/How-to-post-on-instagram-from-pc.jpg' }}"
+                                                    alt="Post Thumbnail">
+                                            </div>
+                                        </a>
+                                        <div class="flex-grow-1">
+                                            <h5 class="h6 mb-0">
+                                                <a wire:navigate class="text-black"
+                                                    href="{{ route('blog.detail', $article) }}">
+                                                    {{ $article->title }}
+                                                </a>
+                                            </h5>
+                                            <small>{{ $article->created_at->format('d M, Y') }}</small>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                     <!-- Social -->
 

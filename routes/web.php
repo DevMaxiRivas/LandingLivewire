@@ -21,3 +21,6 @@ Route::get('/team', \App\Livewire\ShowTeamPage::class)
 
 Route::get('/blog', \App\Livewire\ShowBlog::class)
     ->name('blog.index');
+
+Route::get('/blog/{article}', \App\Livewire\BlogDetail::class)
+    ->name('blog.detail');
