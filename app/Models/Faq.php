@@ -3,28 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\Enums\EnumStatusFAQs;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Faq extends Model
 {
     use HasFactory;
+    protected $table = 'faqs';
+
     protected $fillable = [
-        'name',
-        'slug',
+        'question',
+        'answer',
         'status',
     ];
 
     protected $casts = [
-        'status' => 'integer',
+        'status' => EnumStatusFAQs::class,
     ];
 
     public function getRouteKeyName()
     {
-        return 'slug';
-    }
-
-    public function articles()
-    {
-        return $this->hasMany(Article::class);
+        return 'question';
     }
 }
