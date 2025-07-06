@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use App\Enums\StatusServiceEnum;
+use App\Enums\PageStateEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Page extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title',
-        'icon_class',
-        'short_desc',
-        'description',
+        'image',
+        'content',
         'state',
     ];
 
-    protected $cast = [
-        'state' => StatusServiceEnum::class,
+    protected $casts = [
+        'state' => PageStateEnum::class,
     ];
 }

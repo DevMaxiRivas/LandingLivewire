@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Enums\Enums;
+namespace App\Enums;
 
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum EnumStatusFAQs: int implements HasLabel, HasColor
+enum StatusServiceEnum: int implements HasLabel, HasColor
 {
     case ACTIVE = 1;
     case INACTIVE = 2;
 
-    public function getLabel(): string
+    public function getLabel(): string|null
     {
         return match ($this) {
             self::ACTIVE => 'Active',
@@ -18,7 +18,7 @@ enum EnumStatusFAQs: int implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string
+    public function getColor(): string|null
     {
         return match ($this) {
             self::ACTIVE => 'success',

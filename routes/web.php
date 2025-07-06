@@ -24,3 +24,12 @@ Route::get('/blog', \App\Livewire\ShowBlog::class)
 
 Route::get('/blog/{article}', \App\Livewire\BlogDetail::class)
     ->name('blog.detail');
+
+Route::get('/faqs', \App\Livewire\ShowFAQs::class)
+    ->name('faqs.index');
+
+Route::get('/page/{page}', \App\Livewire\ShowPage::class)
+    ->name('page.show');
+
+Route::get('/contact', \App\Livewire\ShowContactPage::class)
+    ->name('contact-page.show');

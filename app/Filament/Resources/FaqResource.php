@@ -3,6 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Enums\Enums\EnumStatusFAQs;
+use App\Enums\Enums\StatusFAQEnum;
+use App\Enums\StatusFAQEnum as EnumsStatusFAQEnum;
 use App\Filament\Resources\FaqResource\Pages;
 use App\Filament\Resources\FaqResource\RelationManagers;
 use App\Models\Faq;
@@ -32,7 +34,7 @@ class FaqResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Select::make('status')
                     ->label('Status')
-                    ->options(EnumStatusFAQs::class)
+                    ->options(EnumsStatusFAQEnum::class)
                     ->default(1)
                     ->required(),
                 RichEditor::make('answer')
